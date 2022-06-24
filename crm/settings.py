@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$zvq$=f81*cz%d+-b)fa8^oq==nw7o8u0r@6i+opnhyh#)^4-1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hariscrm-cli.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     'accounts.apps.AccountsConfig',
     'django_filters',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +81,12 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'demo_1',
+        'USER': 'harisiftikhar',
+        'PASSWORD': '6677454323HaHa',
+        'HOST': 'database-1.cbjvkawytzqu.us-east-1.rds.amazonaws.com',
+        'PORT': '54322'
     }
 }
 
@@ -135,3 +141,26 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+
+#SMTP Configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'iftikharmuhammad406@gmail.com'
+EMAIL_HOST_PASSWORD = 'rptlvjuxukuauudc'
+
+
+
+
+AWS_ACCESS_KEY_ID = 'AKIAWEE7YGGZ332KJBXM'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'haris-crm-bucket'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_S3_ADDRESSING_STYLE = "virtual"
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
